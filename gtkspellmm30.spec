@@ -1,11 +1,14 @@
 Name:           gtkspellmm30
 Version:        3.0.5
-Release:        8
+Release:        9
 License:        GPLv2+
 Summary:        C++ interface on top of the gtkspell C library
 URL:            http://gtkspell.sourceforge.net/
 Source0:        http://sourceforge.net/projects/gtkspell/files/gtkspellmm/gtkspellmm-%{version}.tar.xz
 BuildRequires:  gcc-c++ gtkspell3-devel gtkmm30-devel gtkmm30-doc make
+%ifarch riscv64
+BuildRequires:  pkgconfig(enchant-2)
+%endif
 
 %description
 The gtkspellmm C++ binding provides a C++ interface on top of the gtkspell C library.
@@ -54,5 +57,8 @@ Documentation for gtkspellmm30.
 %{_datadir}/doc/gtkspellmm-3.0
 
 %changelog
+* Sat Mar 05 2022 YukariChiba <i@0x7f.cc> - 3.0.5-9
+- Add missing dependency for RISC-V
+
 * Sat Dec 14 2019 Ling Yang <lingyang2@huawei.com> - 3.0.5-8
 - Package init
